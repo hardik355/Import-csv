@@ -1,0 +1,23 @@
+<h1> Listing All Data </h1>
+<%= link_to 'New Record', new_employee_path %>
+<table>
+    <tr>
+        <th> Name </th>
+        <th> Area </th>
+        <th> City </th>
+    </tr>
+
+    <% @employees.each do |employee| %>
+        <tr>
+            <td><%= employee.name %></td>
+            <td><%= employee.area %></td>
+            <td><%= employee.city %></td>
+            <td><%= link_to 'Show', employee_path(employee) %></td>
+            <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+            <td><%= link_to 'Destroy', employee_path(employee), 
+                            method: :"delete",
+                            data: {confirm: "Are You Sure"} %> </td> 
+                    
+        </tr>
+        <% end %>
+</table>

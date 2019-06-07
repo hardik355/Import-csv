@@ -1,0 +1,23 @@
+<h1> Enter Data </h1>
+
+<%= form_with(model: @employee, local: true) do |form| %>
+
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+   
+    <p>
+      <%= form.label :area %><br>
+      <%= form.text_area :area %>
+    </p>
+
+    <p>
+      <%= form.label :city %><br>
+      <%= form.text_area :city %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+<% end %>
