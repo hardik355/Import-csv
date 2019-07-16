@@ -1,5 +1,12 @@
 <h1> Listing All Data </h1>
+
 <%= link_to 'New Record', new_employee_path %>
+<p>
+  Download:
+  <%= link_to "CSV", employees_path(format: "csv") %> |
+  <%= link_to "Excel", employees_path(format: "xls") %>
+</p>
+
 <table>
     <tr>
         <th> Name </th>
@@ -17,7 +24,15 @@
             <td><%= link_to 'Destroy', employee_path(employee), 
                             method: :"delete",
                             data: {confirm: "Are You Sure"} %> </td> 
-                    
         </tr>
         <% end %>
 </table>
+
+<h2>Import Employee data</h2>
+
+<%= form_tag import_employees_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<p><%#= link_to "Printable Receipt (PDF)", meters_path(@meters, format: "pdf"), target: '_blank' %></p>

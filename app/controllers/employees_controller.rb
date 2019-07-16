@@ -2,6 +2,15 @@ class EmployeesController < ApplicationController
   
   def index
     @employees = Employee.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @employees.to_csv}
+    end
+  end
+
+  def import
+    Employee.import(params[:file])
+    redirect_to root_url, notice: "Product imported."
   end
 
   def show

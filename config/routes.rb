@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :employees
-  root "employees#index"
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  
+  resources :employees do
+    collection { post :import }
+  end
+   root to: 'employees#index'
+
 end
