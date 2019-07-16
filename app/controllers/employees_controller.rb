@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @employees.to_csv}
+      format.xls { send_data @employees.to_csv(col_sep: "\s") }
     end
   end
 

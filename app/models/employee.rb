@@ -4,11 +4,10 @@ class Employee < ApplicationRecord
         CSV.generate(options) do |csv|
           csv << column_names
             all.each do |employee|  
-              csv << employee.attributes.value_at(*column_names)
+              csv << employee.attributes.values
             end
         end
     end
-
     def self.import(file)
         spreadsheet = open_spreadsheet(file)
         header = spreadsheet.row(1)
@@ -28,4 +27,5 @@ class Employee < ApplicationRecord
         else raise "Unknown file type: #{file.original_filename}"
         end
     end
+    
 end
